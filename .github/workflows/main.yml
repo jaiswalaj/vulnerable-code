@@ -1,0 +1,14 @@
+-- name: Checkmarx AST Github Action
+  uses: Checkmarx/ast-github-action@2.0.23
+  with:
+    base_uri: https://ind.ast.checkmarx.net/
+    cx_tenant: testayush
+    cx_client_id: ${{ secrets.CLIENT_ID }}
+    cx_client_secret: ${{ secrets.SECRET }}
+    project_name: Webgoat Github Project
+    branch: master
+    additional_params: --file-filter !readme --report-format sarif --output-name results
+-  name: Upload SARIF File
+   uses: github/codeql-action/upload-sarif
+   with:
+     sarif_file: results.sarif
