@@ -55,3 +55,8 @@ jobs:
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: cx_result.sarif
+      - name: Upload SARIF file as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cx_result
+          path: cx_result.sarif
